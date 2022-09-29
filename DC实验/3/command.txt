@@ -1,0 +1,11 @@
+hadoop fs -rm -r /input /result1 /result2
+hadoop fs -mkdir /input
+hadoop fs -put grades.txt /input
+
+spark-submit Grades.py
+
+hadoop fs -get /result1 ./
+hadoop fs -cat /result1/part-00000
+
+hadoop fs -get /result2 ./
+hadoop fs -cat /result2/part-00000

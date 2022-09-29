@@ -1,0 +1,11 @@
+hadoop fs -rm -r /input /output                                             //删除子目录
+hadoop fs -mkdir /input
+hadoop fs -put child-parent.txt /input
+
+// del *.class                                                                            //删除之前的子类
+// rd output /s/q                                                                    //强制删除非空文件夹
+javac Relationship.java -cp $(hadoop classpath)
+jar cvf relationship.jar *.class
+hadoop jar relationship.jar Relationship /input /output         //执行
+hadoop fs -get /output ./                                                       //在实际文件夹中获取output
+hadoop fs -cat /output/part-r-00000

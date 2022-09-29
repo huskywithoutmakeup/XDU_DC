@@ -1,0 +1,10 @@
+hadoop fs -rm -r /input /output
+hadoop fs -mkdir /input
+hadoop fs -put grades.txt /input
+
+javac -encoding GBK studentGrade.java -cp $(hadoop classpath)
+jar cvf studentGrade.jar *.class
+hadoop jar studentGrade.jar studentGrade /input /output
+hadoop fs -get /output ./
+hadoop fs -cat /output/part-r-00000
+
